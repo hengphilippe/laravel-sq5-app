@@ -25,7 +25,7 @@
         <div class="col-sm-6 px-0 d-none d-sm-block">
           <img src="https://www.bootstrapdash.com/demo/login-template-free-1/assets/images/login.jpg" alt="login image" class="login-img">
           <p class="text-white font-weight-medium text-center flex-grow align-self-end footer-link">
-            Free <a href="https://www.bootstrapdash.com/" target="_blank" class="text-white">Bootstrap dashboard templates</a> from Bootstrapdash
+             <a href="https://web.facebook.com/thearith.loveTechnology/" target="_blank" class="text-white">Thearith</a> Develop
           </p>
         </div>
       </div>

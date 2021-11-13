@@ -27,9 +27,10 @@
                     @auth
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                        <a href="#!" class="text-sm text-gray-700 dark:text-gray-500 underline">{{ Auth::user()->email }}</a>
+                        <a href="#!" class="text-sm text-gray-700 dark:text-gray-500 underline">{{ Auth::user()->name }}</a>
                         <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
                         <button class="text-sm text-gray-700 dark:text-gray-500 underline" type="submit">Logout</button>
+                        <a class="text-sm text-gray-700 dark:text-gray-500 bg-yellow-300" type="submit">Profile</a>
                         </form>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
@@ -125,10 +126,6 @@
                                 Sponsor
                             </a>
                         </div>
-                    </div>
-
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </div>
                 </div>
             </div>
