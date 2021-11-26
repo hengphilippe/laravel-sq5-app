@@ -7,6 +7,7 @@
         <label for="name">UserName</label>
         <input type="text" name="name" id="name" class="form-control" placeholder="Your name...">
       </div>
+      
   <div class="form-group">
     <label for="email">Email</label>
     <input type="email" name="email" id="email" class="form-control" placeholder="email@example.com">
