@@ -1,6 +1,8 @@
 <?php
 
+use Admin\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->middleware(['auth','verified']);
+
+Route::prefix('user')->middleware(['auth','verified'])->name('user.')->group(function(){
+    Route::get('profile', Profile::class)->name('profile');
+});
