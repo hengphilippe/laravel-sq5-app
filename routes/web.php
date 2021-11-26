@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Front\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-})->middleware(['auth','verified']);
+    return view('front.index');
+});
+
+Route::get('/{category}', [CategoryController::class,'index']);
+
+// ->middleware(['auth','verified']);
+Route::get('/admin', function(){
+    return view('admin.index');
+});
