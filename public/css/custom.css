@@ -1,0 +1,11 @@
+.profile-link {
+    padding: 3px 7px 5px 7px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.profile-btn-logout{
+    padding: 8px;
+    border-radius: 3px;
+    cursor: pointer;
+}

@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -19,6 +18,7 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        <link rel="stylesheet" href="./css/custom.css" type="text/css">
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
@@ -27,10 +27,10 @@
                     @auth
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                        <a href="#!" class="text-sm text-gray-700 dark:text-gray-500 underline">{{ Auth::user()->name }}</a>
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                        <button class="text-sm text-gray-700 dark:text-gray-500 underline" type="submit">Logout</button>
-                        <a class="text-sm text-gray-700 dark:text-gray-500 bg-yellow-300" type="submit">Profile</a>
+                        <a href="#!" class="text-gray-700 dark:text-gray-500 bg-gray-100  profile-link">{{ Auth::user()->name }}</a>
+                        <a href="{{ url('/home') }}" class="text-gray-700 dark:text-gray-500 bg-gray-100  profile-link">Home</a>
+                        <button class=" text-gray-700 dark:text-gray-500 bg-gray-100 underline profile-btn-logout" href="{{ route('logout') }}">Logout</button>
+                        <a class="text-gray-700 dark:text-gray-500 bg-gray-100 underline profile-link" href="{{ url('/user/profile/edit/'. Auth::user()->id) }}">Profile</a>
                         </form>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
