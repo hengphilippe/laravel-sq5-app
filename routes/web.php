@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\ArticleController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Front\FrontendController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\CategoryController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,13 +18,13 @@ use App\Http\Controllers\Front\CategoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('front.index');
-});
 
-Route::get('/{category}', [CategoryController::class,'index']);
+//Frontend
+route::get('/', [FrontendController::class, 'index']);
+route::get('/menu', [FrontendController::class, 'menu'])->name('menu');
+route::get('/menu/article', [FrontendController::class, 'article'])->name('menu.article');
 
-// ->middleware(['auth','verified']);
-Route::get('/admin', function(){
-    return view('admin.index');
-});
+//Backend
+route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+route::get('/admin/category', [CategoryController::class, 'index'])->name('admin.category');
+route::get('/admin/article', [ArticleController::class, 'index'])->name('admin.article');

@@ -5,11 +5,16 @@
     @csrf
     <div class="form-group">
         <label for="name">UserName</label>
-        <input type="text" name="name" id="name" class="form-control" placeholder="Mr.A">
+        <input type="text" name="name" id="name" class="form-control" placeholder="Your name...">
       </div>
+      
   <div class="form-group">
     <label for="email">Email</label>
     <input type="email" name="email" id="email" class="form-control" placeholder="email@example.com">
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="text" name="phone" id="phone" class="form-control" placeholder="010 200 300">
   </div>
   <div class="form-group mb-4">
     <label for="password">Password</label>

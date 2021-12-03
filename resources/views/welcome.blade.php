@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 
         <!-- Styles -->
         <style>
@@ -27,9 +28,9 @@
                     @auth
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                        <a href="#!" class="text-sm text-gray-700 dark:text-gray-500 underline">{{ Auth::user()->email }}</a>
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                        <button class="text-sm text-gray-700 dark:text-gray-500 underline" type="submit">Logout</button>
+                        <a href="{{ route('user.profile') }}" class="text-sm text-gray-700 dark:text-gray-500" title="Profile"><i class='bx bxs-user' style="font-size: 1.5rem"></i></a>
+                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500">Home</a>
+                        <button class="text-sm text-gray-700 dark:text-gray-500" type="submit">Logout</button>
                         </form>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
