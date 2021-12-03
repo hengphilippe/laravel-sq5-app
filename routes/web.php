@@ -1,9 +1,11 @@
 <?php
 
-use Admin\UserController;
+use App\Http\Controllers\Admin\ArticleController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Front\FrontendController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\Profile;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,10 +17,24 @@ use App\Http\Controllers\User\Profile;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware(['auth','verified']);
+// Route::get('/', function () {
+//     return view('front.index');
+// });
 
-Route::prefix('user')->middleware(['auth','verified'])->name('user.')->group(function(){
-    Route::get('profile', Profile::class)->name('profile');
-});
+// Route::get('/home', function(){
+//     return "Welcome to login, User ". Auth::user()->name;
+// })->middleware('auth');
+
+// Route::get('/admin', function(){
+//     return view('admin.index');
+// });
+
+//Frontend
+route::get('/', [FrontendController::class, 'index']);
+route::get('/menu', [FrontendController::class, 'menu'])->name('menu');
+route::get('/menu/article', [FrontendController::class, 'article'])->name('menu.article');
+
+//Backend
+route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+route::get('/admin/category', [CategoryController::class, 'index'])->name('admin.category');
+route::get('/admin/article', [ArticleController::class, 'index'])->name('admin.article');
