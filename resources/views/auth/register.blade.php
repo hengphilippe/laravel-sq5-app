@@ -11,9 +11,14 @@
         <label for="name">Phone</label>
         <input type="text" name="phone" id="phone" class="form-control" placeholder="Enter your phone">
       </div>
+      
   <div class="form-group">
     <label for="email">Email</label>
     <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email">
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="text" name="phone" id="phone" class="form-control" placeholder="010 200 300">
   </div>
   <div class="form-group mb-4">
     <label for="password">Password</label>

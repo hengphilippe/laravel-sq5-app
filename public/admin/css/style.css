@@ -1,0 +1,9 @@
+.dashboard-link{
+    text-decoration: none;
+}
+.dashboard-link:hover{
+    text-decoration: none;
+    cursor: pointer;
+    text-decoration-line: none;
+    background: #fafafa;
+}
