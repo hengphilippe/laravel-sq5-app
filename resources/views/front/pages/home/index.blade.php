@@ -264,9 +264,9 @@
                 </div>
 
                 <div class="col-md-4">
-                    <x-front.right_sidebar.most_read />
-                    <x-front.right_sidebar.featured_posts />
-                    <x-front.right_sidebar.image />
+                    {{-- <x-front.right_sidebar.most_read /> --}}
+                    {{-- <x-front.right_sidebar.featured_posts /> --}}
+                    {{-- <x-front.right_sidebar.image /> --}}
                 </div>
             </div>
 

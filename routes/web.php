@@ -24,6 +24,14 @@ route::get('/menu', [FrontendController::class, 'menu'])->name('menu');
 route::get('/menu/article', [FrontendController::class, 'article'])->name('menu.article');
 
 //Backend
-route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-route::get('/admin/category', [CategoryController::class, 'index'])->name('admin.category');
-route::get('/admin/article', [ArticleController::class, 'index'])->name('admin.article');
+
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::group(['prefix' => '/admin'], function(){
+        route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+        route::get('/category', [CategoryController::class, 'index'])->name('admin.category')->middleware('isAdmin');
+        route::get('/article', [ArticleController::class, 'index'])->name('admin.article');
+    });
+
+});
