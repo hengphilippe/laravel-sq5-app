@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Front\FrontendController;
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +28,18 @@ route::get('/menu/article', [FrontendController::class, 'article'])->name('menu.
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
+
+    // admin user pass: 123->8
     Route::group(['prefix' => '/admin'], function(){
         route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-        route::get('/category', [CategoryController::class, 'index'])->name('admin.category')->middleware('isAdmin');
+        route::get('/category', [CategoryController::class, 'setCategoy'])->name('admin.category');
         route::get('/article', [ArticleController::class, 'index'])->name('admin.article');
+
+        route::get('/article/create', [ArticleController::class, 'create'])->name('admin.article.create');
+        route::POST('/uploader', [ArticleController::class, 'uploader'])
+        ->name("upload_handler");
+        route::POST('/article/save',[ArticleController::class, 'save'])
+        ->name("article.save");
     });
 
 });

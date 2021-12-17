@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <!-- END SETTINGS -->
     <script async src="{{ asset('admin/js.js') }}"></script>
+    <script src="https://cdn.tiny.cloud/1/2nhopgs8whtv6zu4fbrtmmh17b7kpwd9g55ktj83h3vz15q2/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 

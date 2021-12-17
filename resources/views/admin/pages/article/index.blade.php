@@ -24,8 +24,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Image</th>
+                                    <th scope="col">Title</th>
                                     <th scope="col">Category</th>
                                     <th scope="col">Created At</th>
                                     <th scope="col">Status</th>
@@ -33,81 +32,85 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr style="height: 120px">
-                                    <td>1</td>
-                                    <td>Lorem</td>
-                                    <td>about</td>
-                                    <td>Sport</td>
-                                    <td>03-Dec-2021</td>
-                                    <td>
-                                        <input type="checkbox" data-id="" class="status-event form-check-input-switchery"
-                                            checked data-fouc>
-                                        {{-- @if ($about->status == 1)
-                                        <input type="checkbox" data-id="{{ $about->id }}" class="status-event form-check-input-switchery" checked data-fouc>
-                                        @else
-                                            <input type="checkbox" data-id="{{ $about->id }}" class="status-event form-check-input-switchery" data-fouc>
-                                        @endif --}}
-                                    </td>
-                                    <td class="text-center">
-                                        <div class="card-actions">
-                                            <div class="dropdown position-relative" data-bs-display="sticky">
-                                                <a data-bs-toggle="dropdown" data-bs-display="sticky" aria-expanded="false"
-                                                    class="">
-                                                    <i class='bx bx-dots-vertical'></i>
-                                                </a>
-
-                                                <div class="dropdown-menu dropdown-menu-end"
-                                                    aria-labelledby="dropdownMenuButton" x-placement="top-start"
-                                                    style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-20px, -87px, 0px);">
-                                                    <a class="dropdown-item" href="#" data-bs-display="sticky"> <i
-                                                            class='bx bx-edit-alt'></i> Edit</a>
-                                                    <a class="dropdown-item" href="#" data-bs-display="sticky"> <i
-                                                            class='bx bx-trash'></i> Delete</a>
+                            
+                                @foreach ($articles as $post)
+                                    @can('checkAdmin')
+                                        {{-- @if(Auth::user()->can('view-post')) --}}
+                                        <tr style="height: 120px">
+                                            <td>{{ $post->id }}</td>
+                                            <td>{{ $post->title }}</td>
+                                            <td>{{ $post->category->name }}</td>
+                                            <td>{{ $post->humanDateTime() }}</td>
+                                            {{-- <td>{{ $post->status }}</td> --}}
+                                            <td>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" 
+                                                    {{ ($post->status == 1 ) ? "checked" : "" }} >
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                    </td>
-                                </tr>
-
-                                <tr style="height: 120px">
-                                    <td>2</td>
-                                    <td>Contact</td>
-                                    <td>contact</td>
-                                    <td>Sport</td>
-                                    <td>03-Dec-2021</td>
-                                    <td>
-                                        <input type="checkbox" data-id="" class="status-event form-check-input-switchery"
-                                            checked data-fouc>
-                                        {{-- @if ($about->status == 1)
-                                        <input type="checkbox" data-id="{{ $about->id }}" class="status-event form-check-input-switchery" checked data-fouc>
-                                        @else
-                                            <input type="checkbox" data-id="{{ $about->id }}" class="status-event form-check-input-switchery" data-fouc>
-                                        @endif --}}
-                                    </td>
-                                    <td class="text-center">
-                                        <div class="card-actions">
-                                            <div class="dropdown position-relative" data-bs-display="sticky">
-                                                <a data-bs-toggle="dropdown" data-bs-display="sticky" aria-expanded="false"
-                                                    class="">
-                                                    <i class='bx bx-dots-vertical'></i>
-                                                </a>
-
-                                                <div class="dropdown-menu dropdown-menu-end"
-                                                    aria-labelledby="dropdownMenuButton" x-placement="top-start"
-                                                    style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-20px, -87px, 0px);">
-                                                    <a class="dropdown-item" href="#" data-bs-display="sticky"> <i
-                                                            class='bx bx-edit-alt'></i> Edit</a>
-                                                    <a class="dropdown-item" href="#" data-bs-display="sticky"> <i
-                                                            class='bx bx-trash'></i> Delete</a>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="card-actions">
+                                                    <div class="dropdown position-relative" data-bs-display="sticky">
+                                                        <a data-bs-toggle="dropdown" data-bs-display="sticky" aria-expanded="false"
+                                                            class="">
+                                                            <i class='bx bx-dots-vertical'></i>
+                                                        </a>
+        
+                                                        <div class="dropdown-menu dropdown-menu-end"
+                                                            aria-labelledby="dropdownMenuButton" x-placement="top-start"
+                                                            style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-20px, -87px, 0px);">
+                                                            <a class="dropdown-item" href="#" data-bs-display="sticky"> <i
+                                                                    class='bx bx-edit-alt'></i> Edit</a>
+                                                            <a class="dropdown-item" href="#" data-bs-display="sticky"> <i
+                                                                    class='bx bx-trash'></i> Delete</a>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                    </td>
-                                </tr>
-
-
+        
+                                            </td>
+                                        </tr>
+                                        {{-- @endif --}}
+                                    @endcan
+                                    @cannot('checkAdmin')
+                                        @if(Auth::user()->can('view-post', $post))
+                                        <tr style="height: 120px">
+                                            <td>{{ $post->id }}</td>
+                                            <td>{{ $post->title }}</td>
+                                            <td>{{ $post->category->name }}</td>
+                                            <td>{{ $post->humanDateTime() }}</td>
+                                            {{-- <td>{{ $post->status }}</td> --}}
+                                            <td>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" 
+                                                    {{ ($post->status == 1 ) ? "checked" : "" }} >
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="card-actions">
+                                                    <div class="dropdown position-relative" data-bs-display="sticky">
+                                                        <a data-bs-toggle="dropdown" data-bs-display="sticky" aria-expanded="false"
+                                                            class="">
+                                                            <i class='bx bx-dots-vertical'></i>
+                                                        </a>
+        
+                                                        <div class="dropdown-menu dropdown-menu-end"
+                                                            aria-labelledby="dropdownMenuButton" x-placement="top-start"
+                                                            style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-20px, -87px, 0px);">
+                                                            <a class="dropdown-item" href="#" data-bs-display="sticky"> <i
+                                                                    class='bx bx-edit-alt'></i> Edit</a>
+                                                            <a class="dropdown-item" href="#" data-bs-display="sticky"> <i
+                                                                    class='bx bx-trash'></i> Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+        
+                                            </td>
+                                        </tr>
+                                        @endif
+                                    @endcannot
+                                
+                                @endforeach
+                               
                             </tbody>
                         </table>
                     </div>
