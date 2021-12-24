@@ -61,17 +61,21 @@
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboad</span>
                 </a>
             </li>
-
+            {{-- @can('checkAdmin')
+             --}}
+            @if(auth()->user()->is_admin)
             <li class="sidebar-item {{ Request()->is('admin/category*') ? 'active' : ''  }}">
                 <a href="{{ route('admin.category') }}" class="sidebar-link">
                     <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Category</span>
                 </a>
             </li>
+            @endif
             <li class="sidebar-item {{ Request()->is('admin/article*') ? 'active' : '' }}">
                 <a href="{{ route('admin.article') }}" class="sidebar-link">
                     <i class="align-middle" data-feather="file-text"></i> <span class="align-middle">Article</span>
                 </a>
             </li>
+
             <li class="sidebar-item">
                 <a href="" class="sidebar-link">
                     <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Setting</span>
