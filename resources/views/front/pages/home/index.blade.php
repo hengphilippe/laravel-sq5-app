@@ -46,7 +46,8 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                
+                {{-- <div class="col-md-4">
                     <div class="post">
                         <a class="post-img" href="{{ route('menu.article') }}"><img
                                 src="{{ asset('front/img/xpost-3.jpg.pagespeed.ic.UjtolzGXxD.webp') }}" alt=""></a>
@@ -140,7 +141,7 @@
                                     Development Tools</a></h3>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
 

@@ -20,14 +20,11 @@ use Illuminate\Support\Facades\Auth;
 
 
 //Frontend
-route::get('/', [FrontendController::class, 'index']);
+route::get('/', [FrontendController::class, 'dashbaord']);
 route::get('/menu', [FrontendController::class, 'menu'])->name('menu');
 route::get('/menu/article', [FrontendController::class, 'article'])->name('menu.article');
 
 //Backend
-
-
-
 Route::middleware(['auth', 'verified'])->group(function () {
 
     // admin user pass: 123->8
