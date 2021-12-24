@@ -13,12 +13,9 @@
 
 
                 <ul class="nav-menu nav navbar-nav">
-                    <li><a href="{{ route('menu') }}" class=""> News</a></li>
-                    <li><a href="{{ route('menu') }}">Popular</a></li>
-                    <li class="cat-1"><a href="{{ route('menu') }}">Web Design</a></li>
-                    <li class="cat-2"><a href="{{ route('menu') }}">JavaScript</a></li>
-                    <li class="cat-3"><a href="{{ route('menu') }}">Css</a></li>
-                    <li class="cat-4"><a href="{{ route('menu') }}">Jquery</a></li>
+                    @foreach ($categories as $category)
+                    <li><a href="#none" class=""> {{ $category->name ? $category->name : 'System name' }}</a></li>
+                    @endforeach
                 </ul>
 
 
